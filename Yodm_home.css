@@ -25,58 +25,65 @@ p{
     gap: 20px;
     padding: 10px;
 }
-.button-container {
-    position: relative;
-    width: calc(33.33% - 20px);
-    height: 75px;
-    overflow: hidden;
-    border-radius: 50px;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/* From Uiverse.io by Gaurav-WebDev */ 
 .button {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #3F4041;
-    background-color: #dfe7f5;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  border-radius: 40px;
 }
-.button-container:hover .button {
-    background-color: #ebeff5;
+
+.button:hover {
+  box-shadow: .5px .5px 150px #252525;
 }
-.overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #008CBA;
-    overflow: hidden;
-    width: 100%;
-    height: 0;
-    transition: .5s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 10px;
-    box-sizing: border-box;
-    font-weight: bold;
+
+.type1::after {
+  content: "Thanks";
+  height: 50px;
+  width: 150px;
+  background-color: #008080;
+  color: #fff;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translateY(50px);
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
 }
-.button-container:hover .overlay {
-    height: 100%;
+
+.type1::before {
+  content: "Hover Me";
+  height: 50px;
+  width: 150px;
+  background-color: #fff;
+  color: #008080;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translateY(0px) scale(1.2);
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
 }
-.overlay-text {
-    color: white;
-    font-size: 14px;
+
+.type1:hover::after {
+  transform: translateY(0) scale(1.2);
+}
+
+.type1:hover::before {
+  transform: translateY(-50px) scale(0) rotate(120deg);
 }
 #menu-btn {
     background-color: #303030;
