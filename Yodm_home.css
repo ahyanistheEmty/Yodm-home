@@ -1,0 +1,227 @@
+ /* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0d1117;
+    color: #c9d1d9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    top: 50px;
+}
+
+.header h1 {
+    font-size: 16rem;
+    color: #58a6ff;
+    margin: 0;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    margin-top: -25px;
+    padding-bottom: 50px;
+}
+
+.header h1.flipping {
+    transform: rotateY(360deg);
+}
+
+.header .subtitle {
+    font-size: 2rem;
+    color: #8b949e;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    position: relative;
+    margin-bottom: 0;
+    height: 0;
+    padding-bottom: 50px;
+}
+
+.header h1:hover + .subtitle {
+    opacity: 1;
+    transform: translateY(0);
+    height: 20px;
+    margin-bottom: 20px;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.header h1:hover + .subtitle + .button-container,
+.header h1:hover ~ .button-container {
+    transform: translateY(20px);
+    margin-top: 50px;
+}
+
+/* Button Wrapper */
+.button-wrapper {
+    position: relative;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* Animated Button */
+.animated-button {
+    display: block;
+    padding: 15px;
+    background: linear-gradient(135deg, #58a6ff, #1f6feb);
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    width: 100%;
+}
+
+.animated-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(88, 166, 255, 0.5);
+}
+
+/* Mouse shadow effect */
+body::before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle 30px at var(--x) var(--y), 
+                rgba(88, 166, 255, 0.1), 
+                transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+body:hover::before {
+    opacity: 1;
+}
+
+/* Ripple effect */
+.ripple {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: rippleEffect 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Overlay */
+.info-overlay {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    background: #161b22;
+    color: #c9d1d9;
+    text-align: center;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    pointer-events: none;
+}
+
+.button-wrapper:hover .info-overlay {
+    opacity: 1;
+    max-height: 100px;
+    pointer-events: auto;
+}
+
+/* Popup Styles */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: #1a1f2a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(88, 166, 255, 0.2);
+    z-index: 1000;
+    width: 80%;
+    max-width: 600px;
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.popup.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.popup-content {
+    color: #c9d1d9;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #58a6ff;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.close-btn:hover {
+    background: #1f6feb;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
